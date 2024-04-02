@@ -50,6 +50,53 @@
             bottom: 0;
             width: 100%;
         }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .app-item {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            align-items: center;
+            text-align: center;
+        }
+
+        .app-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .app-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .app-link {
+            display: inline-block;
+        }
+        
+        .app-thumbnail {
+            width: 200px; /* 调整图片大小 */
+            height: 200px; /* 调整图片大小 */
+            border-radius: 20px; /* 调整圆角半径 */
+            overflow: hidden; /* 隐藏超出圆角矩形的部分 */
+        }
+
+        .app-thumbnail.round {
+            border-radius: 50%;
+        }
+
+        .app-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 确保图片完全填充圆角矩形 */
+        }
     </style>
 </head>
 <body>
@@ -68,8 +115,8 @@
         <ul>
             <li>Swift</li>
             <li>Xcode</li>
-            <li>UIKit and SwiftUI</li>
-            <li>Core Data</li>
+            <li>UIKit & SwiftUI</li>
+            <li>Core Data & Swift Data</li>
             <!-- Add more skills as needed -->
         </ul>
 
@@ -82,6 +129,57 @@
         <p>
             Feel free to reach out to me at <a href="mailto:guoyingtao@outlook.com">guoyingtao@outlook.com</a>.
         </p>
+
+        <!-- App Showcase Area -->
+        <section class="app-showcase">
+            <h2>My Apps on the App Store</h2>
+            <div class="app-grid">
+                <div class="app-item">
+                    <a href="https://apps.apple.com/us/app/quick-video-story/id1397061725" target="_blank" class="app-link">
+                        <div class="app-thumbnail">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/55/22/60/55226088-0118-ce1d-13f1-5d13169f90e7/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp" alt="Quick Video Story">
+                        </div>
+                        <h3>Quick Video Story (iOS)</h3>
+                    </a>
+                </div>
+            
+                <div class="app-item">
+                    <a href="https://apps.apple.com/us/app/flash-panda/id6478799928" target="_blank" class="app-link">
+                        <div class="app-thumbnail">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9c/dd/95/9cdd951d-366f-01a7-d325-3f3307b305aa/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/460x0w.webp" alt="Flash Panda">
+                        </div>
+                        <h3>Flash Panda (iOS + watchOS)</h3>
+                    </a>
+                </div>
+            
+                <div class="app-item">
+                    <a href="https://apps.apple.com/us/app/combine-photo-tiles/id6480262514" target="_blank" class="app-link">
+                        <div class="app-thumbnail">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4d/52/6d/4d526dec-47a0-7559-d196-97884f448afc/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/460x0w.webp" alt="Combine Photo Tiles">
+                        </div>
+                        <h3>Combine Photo Tiles (iOS)</h3>
+                    </a>
+                </div>
+            
+                <div class="app-item">
+                    <a href="https://apps.apple.com/in/app/crazy-morse-code/id1541568588" target="_blank" class="app-link">
+                        <div class="app-thumbnail round">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/2e/5d/d0/2e5dd0f9-7f79-f6f9-f90c-755c1649f9a6/AppIcon-1x_U007emarketing-0-9-85-220.png/460x0w.webp" alt="Crazy Morse Code">
+                        </div>
+                        <h3>Crazy Morse Code (watchOS)</h3>
+                    </a>
+                </div>
+            
+                <div class="app-item">
+                    <a href="https://apps.apple.com/in/app/bee-reader/id1541036426" target="_blank" class="app-link">
+                        <div class="app-thumbnail round">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/ee/50/f4/ee50f420-b44a-030f-6965-366eae28d997/AppIcon-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp" alt="Bee Reader">
+                        </div>
+                        <h3>Bee Reader (watchOS)</h3>
+                    </a>
+                </div>
+            </div>        
+        </section>
     </section>
 
     <footer>
