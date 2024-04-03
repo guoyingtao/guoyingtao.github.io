@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>运动计时器</title>
+  <title>Timer for Exercise</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div id="container">
@@ -15,18 +16,22 @@
         <div id="total-time"></div>
       </div>
       <div id="controls">
-        <button id="pause-btn">暂停</button>
-        <button id="stop-btn">停止</button>
+        <button id="pause-btn">Pause</button>
+        <button id="stop-btn">Stop</button>
       </div>
     </div>
     <div id="settings">
-      <label for="exercise-time">运动时间 (秒):</label>
+      <div id="music-controls">
+        <label for="music-switch">Music:</label>
+        <input type="checkbox" id="music-switch" checked> <!-- 添加 checked 属性 -->
+      </div>
+      <label for="exercise-time">Exercise Time (seconds):</label>
       <input type="number" id="exercise-time" value="40" min="1">
-      <label for="rest-time">休息时间 (秒):</label>
+      <label for="rest-time">Rest Time (seconds):</label>
       <input type="number" id="rest-time" value="20" min="1">
-      <label for="total-time">总时间 (分钟):</label>
+      <label for="total-time">Total Time (minutes):</label>
       <input type="number" id="total-time" value="20" min="1">
-      <button id="start-btn">开始</button>
+      <button id="start-btn">Start</button>
     </div>
   </div>
 

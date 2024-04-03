@@ -8,6 +8,7 @@ const statusDisplay = document.getElementById('status');
 const currentTimeDisplay = document.getElementById('current-time');
 const totalTimeDisplay = document.getElementById('total-time');
 const container = document.getElementById('container');
+const musicSwitch = document.getElementById('music-switch');
 
 let exerciseTime = parseInt(exerciseTimeInput.value) || 40;
 let restTime = parseInt(restTimeInput.value) || 20;
@@ -17,6 +18,10 @@ let currentTime;
 let isExercise = true;
 let isPaused = false;
 let intervalId;
+let isMusicEnabled = true; // Variable to track music status
+
+let sportsSoundPlayer = new Audio('./audios/happy.mp3');
+let restSoundPlayer = new Audio('./audios/relaxing.mp3');
 
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
@@ -29,6 +34,40 @@ function playSound(type) {
   audio.play();
 }
 
+function pauseAllSounds() {
+    sportsSoundPlayer.pause();
+    restSoundPlayer.pause();
+}
+
+function stopAllSounds() {
+  stopSportsSound();
+  stopRestSound();
+}
+
+function stopSportsSound() {
+    sportsSoundPlayer.pause();
+    sportsSoundPlayer.currentTime = 0;
+}
+
+function stopRestSound() {
+    restSoundPlayer.pause();
+    restSoundPlayer.currentTime = 0;
+}
+
+function playSportsSound() {
+    if (isMusicEnabled) {
+        stopRestSound();
+        sportsSoundPlayer.play();
+    }
+}
+
+function playRestSound() {
+    if (isMusicEnabled) {
+        stopSportsSound();
+        restSoundPlayer.play();
+    }
+}
+
 function updateTimer() {
   if (!isPaused) {
     currentTime--;
@@ -36,23 +75,29 @@ function updateTimer() {
     if (currentTime === 0) {
       isExercise = !isExercise;
       currentTime = isExercise ? exerciseTime : restTime;
-      playSound('switch');
+
+      if (isExercise) {
+        playSportsSound();
+      }  else {
+        playRestSound();
+      }
     }
+
     if (timeRemaining === 0) {
       clearInterval(intervalId);
-      playSound('done');
-      alert('运动结束!');
+      stopAllSounds()
+      alert('Exercise Finished!');
     }
     updateDisplay();
   }
 }
 
 function updateDisplay() {
-  statusDisplay.textContent = isExercise ? '运动时间' : '休息时间';
+  statusDisplay.textContent = isExercise ? 'Exercise Time' : 'Rest Time';
   currentTimeDisplay.textContent = formatTime(currentTime);
-  totalTimeDisplay.textContent = `总剩余时间: ${formatTime(timeRemaining)}`;
+  totalTimeDisplay.textContent = `Total Time Remaining: ${formatTime(timeRemaining)}`;
   document.body.style.backgroundColor = isExercise ? '#ff6961' : '#77dd77';
-  pauseBtn.textContent = isPaused ? '继续' : '暂停';
+  pauseBtn.textContent = isPaused ? 'Resume' : 'Pause';
 }
 
 function startTimer() {
@@ -66,6 +111,7 @@ function startTimer() {
   isPaused = false;
   updateDisplay();
   intervalId = setInterval(updateTimer, 1000);
+  playSportsSound();
 }
 
 function stopTimer() {
@@ -75,11 +121,42 @@ function stopTimer() {
   isExercise = true;
   isPaused = true;
   updateDisplay();
+  stopAllSounds();
+}
+
+function toggleMusic() {
+    isMusicEnabled = !isMusicEnabled;
+
+    if (!isMusicEnabled) {
+        pauseAllSounds();
+    } else {
+        if (isExercise) {
+            playSportsSound();
+        } else {
+            playRestSound();
+        }
+    }
 }
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', () => {
   isPaused = !isPaused;
+
+  if (isExercise) {
+    if (isPaused) {
+      sportsSoundPlayer.pause();
+    } else {
+      playSportsSound();
+    }
+  } else {
+    if (isPaused) {
+      restSoundPlayer.pause();
+    } else {
+      playRestSound();
+    }
+  }
+
   updateDisplay();
 });
 stopBtn.addEventListener('click', stopTimer);
+musicSwitch.addEventListener('change', toggleMusic);
