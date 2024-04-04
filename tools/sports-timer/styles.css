@@ -7,13 +7,13 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
+  font-size: 3.5vw;
 }
-
 
 #container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 90vw;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,38 +22,43 @@ body {
 
 #timer-container {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 }
 
 #status {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #time-display {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 #current-time {
-  font-size: 96px;
-  margin-bottom: 10px;
+  font-size: 8rem;
+  margin-bottom: 0.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #total-time {
-  font-size: 36px;
+  font-size: 2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+#controls {
+  display: flex;
+  justify-content: center;
+}
+
 #controls button {
-  font-size: 24px;
-  padding: 10px 20px;
-  margin: 0 10px;
+  font-size: 3rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -63,42 +68,67 @@ body {
 }
 
 #settings {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  position: static;
+  margin: 2rem auto 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1rem;
+  border-radius: 0.5rem;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #settings label {
-  margin-bottom: 5px;
+  margin-bottom: 0.25rem;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 #settings input {
-  width: 80px;
-  margin-bottom: 10px;
-  padding: 5px;
+  width: 5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+#start-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 #start-btn {
-  padding: 5px 10px;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #start-btn:hover {
   background-color: #45a049;
+}
+
+/* 媒体查询:在较小屏幕上调整样式 */
+@media (max-width: 480px) {
+  #status {
+    font-size: 1.5rem;
+  }
+  #current-time {
+    font-size: 6rem;
+  }
+  #controls button {
+    font-size: 2.5rem;
+  }
+  #settings label {
+    font-size: 1rem;
+  }
 }
