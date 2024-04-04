@@ -140,6 +140,10 @@ function toggleMusic() {
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', () => {
+  if (currentTime === undefined) {
+    return;
+  }
+
   isPaused = !isPaused;
 
   if (isExercise) {
